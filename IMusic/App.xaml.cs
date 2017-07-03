@@ -8,7 +8,10 @@ namespace IMusic
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new Views.HomePage(new ViewModels.MusicViewModel()));
+			MainPage = new NavigationPage(new Views.HomePage(new ViewModels.MusicViewModel()))
+			{
+				BarBackgroundColor = Color.FromHex("#03A9F4")
+			};
 		}
 
 		protected override void OnStart()

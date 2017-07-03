@@ -7,6 +7,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using RoundedBoxView.Forms.Plugin.Droid;
 
 namespace IMusic.Droid
 {
@@ -21,7 +22,7 @@ namespace IMusic.Droid
 			base.OnCreate(bundle);
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
-
+			RoundedBoxViewRenderer.Init();
 			LoadApplication(new App());
 		}
 	}

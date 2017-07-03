@@ -1,5 +1,43 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="IMusic.HomePage">
-	<ContentPage.Content>
-	</ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:abstractions="clr-namespace:RoundedBoxView.Forms.Plugin.Abstractions;assembly=RoundedBoxView.Forms.Plugin.Abstractions" x:Class="IMusic.Views.HomePage">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Text="Ajouter Musique" Command="{Binding AddMusique}"/>
+	</ContentPage.ToolbarItems>
+	<StackLayout>
+		<Grid>
+			<StackLayout>
+				<ListView ItemsSource="{Binding ItemMusic}" RowHeight="250" HasUnevenRows="true" IsPullToRefreshEnabled="true" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy}">
+					<ListView.SeparatorVisibility>
+						<OnPlatform x:TypeArguments="SeparatorVisibility" Android="Default" iOS="None" />
+					</ListView.SeparatorVisibility>
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<ViewCell>
+								<ViewCell.View>
+									<Grid>
+										<Grid.RowDefinitions>
+											<RowDefinition Height="10" />
+											<RowDefinition Height="0.3" />
+											<RowDefinition Height="200" />
+											<RowDefinition Height="10" />
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="10" />
+											<ColumnDefinition Width="*" />
+											<ColumnDefinition Width="10" />
+										</Grid.ColumnDefinitions>
+										<abstractions:RoundedBoxView BackgroundColor="#E0E0E0" Grid.Row="2" Grid.Column="1" HeightRequest="300" WidthRequest="100" CornerRadius="5" />
+										<Image Source="IconMusique.png" Grid.Column="1" TranslationY="33" TranslationX="30" />
+										<Label Text="dalfin" FontSize="12" Grid.Column="1" TranslationX="50" Grid.RowSpan="3" TranslationY="33" />
+										<BoxView Color="Black" Grid.Column="1" Grid.Row="1" TranslationY="45" WidthRequest="320" HeightRequest="0.1" />
+										<Label Grid.Column="1" Text="{Binding Titre}" Grid.Row="2" TranslationX="50" VerticalOptions="Center" />
+									</Grid>
+								</ViewCell.View>
+							</ViewCell>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+			</StackLayout>
+		</Grid>
+	</StackLayout>
 </ContentPage>

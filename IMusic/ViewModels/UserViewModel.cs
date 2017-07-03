@@ -1,5 +1,5 @@
 ﻿using System;
-namespace IMusic
+namespace IMusic.ViewModels
 {
 	public class UserViewModel
 	{

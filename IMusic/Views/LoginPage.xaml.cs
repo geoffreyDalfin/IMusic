@@ -10,6 +10,8 @@ namespace IMusic
 		public LoginPage()
 		{
 			InitializeComponent();
+
+			//NavigationPage.SetHasNavigationBar(this, false);
 		}
 	}
 }

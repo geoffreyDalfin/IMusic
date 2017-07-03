@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:IMusic" BackgroundColor="White" Padding="0,20,0,0" x:Class="IMusic.Views.IMusicPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:IMusic" BackgroundColor="White" Padding="0,20,0,0" x:Class="IMusic.Views.MusicPage">
 	<StackLayout>
 		<Grid>
 			<Grid.ColumnDefinitions>
@@ -11,22 +11,41 @@
 				<RowDefinition Height="100" />
 				<RowDefinition Height="150" />
 			</Grid.RowDefinitions>
-			<BoxView BackgroundColor="Black"  Grid.ColumnSpan="3" Grid.RowSpan="2"/>
-			<Image Source="mister-v-album-couv-h-jpg.jpg" Aspect="AspectFill" Opacity="0.550" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
-			<Label Text="Double V" TranslationY="30" TextColor="White" Font="20" Grid.Column="1" VerticalTextAlignment="Center" HorizontalOptions="Center"/>
+			<Image Source="mister-v-album-couv-h-jpg.jpg" TranslationY="-18" Aspect="AspectFill" Opacity="0.550" Grid.RowSpan="2" Grid.ColumnSpan="3" />
+			<Label Text="Double V" TextColor="White" Font="20" Grid.Column="1" VerticalTextAlignment="Center" HorizontalOptions="Center" />
 		</Grid>
 		<StackLayout>
 			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="*" />
-				</Grid.ColumnDefinitions>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="405" />
-				</Grid.RowDefinitions>
-				<Image Source="octicons_f0bf(0)_256.png" Grid.Column="2" TranslationY="-10" HorizontalOptions="End"/>
-				<BoxView BackgroundColor="White" Grid.ColumnSpan="3" Grid.Row="0"/>
+				<StackLayout>
+					<ListView ItemsSource="{Binding ItemMusic}" HasUnevenRows="true" IsPullToRefreshEnabled="true" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy}">
+						<ListView.SeparatorVisibility>
+							<OnPlatform x:TypeArguments="SeparatorVisibility" Android="Default" iOS="None" />
+						</ListView.SeparatorVisibility>
+						<ListView.ItemTemplate>
+							<DataTemplate>
+								<ViewCell>
+									<ViewCell.View>
+										<Grid>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="5" />
+												<RowDefinition Height="20" />
+												<RowDefinition Height="10" />
+												<RowDefinition Height="0.7" />
+											</Grid.RowDefinitions>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="50" />
+												<ColumnDefinition Width="*" />
+											</Grid.ColumnDefinitions>
+											<Label  Grid.Column="1" Grid.RowSpan="3" Text="{Binding Titre}" VerticalOptions="Center" />
+											<BoxView Color="#E0E0E0" Grid.Row="3" Grid.ColumnSpan="2" WidthRequest="320" HeightRequest="0.3">
+											</BoxView>
+										</Grid>
+									</ViewCell.View>
+								</ViewCell>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+					</ListView>
+				</StackLayout>
 			</Grid>
 		</StackLayout>
 	</StackLayout>

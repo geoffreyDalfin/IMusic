@@ -1,5 +1,52 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="IMusic.LoginPage">
 	<ContentPage.Content>
+		<StackLayout TranslationY="25">
+		<StackLayout.Padding>
+			<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+		</StackLayout.Padding>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="200" />
+			</Grid.RowDefinitions>
+			<Image TranslationY="15" Source="iconInstantMusic.png" HorizontalOptions="Center" />
+		</Grid>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="10" />
+				<RowDefinition Height="50" />
+				<RowDefinition Height="50" />
+				<RowDefinition Height="10" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="40" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="40" />
+			</Grid.ColumnDefinitions>
+			<BoxView Grid.Column="1" Grid.RowSpan="4" />
+			<!--<Image Grid.Column="1" Grid.Row="1" Source="iconUsername.png" HorizontalOptions="Start" />-->
+			<Entry x:Name="Email" Text="{Binding Email}" FontAttributes="Italic" Placeholder="example@silo.email" WidthRequest="200" Grid.Column="1" Grid.Row="1">
+
+			</Entry>
+			<!--	<Image Grid.Column="1" Grid.Row="2" Source="iconPassword.png" HorizontalOptions="Start" />-->
+			<Entry x:Name="Password" FontAttributes="Italic" Text="{Binding Password}" Placeholder="mot de passe" Grid.Column="1" Grid.Row="2" IsPassword="true" />
+		</Grid>
+		<StackLayout x:Name="Layout" TranslationY="50">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="170" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="25" />
+					<RowDefinition Height="25" />
+				</Grid.RowDefinitions>
+				<Button x:Name="Click" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding Login}" Text="Connexion" TextColor="Black" FontSize="20" />
+				<!--<local:LabelClick Grid.Column="1" Grid.Row="1" TranslationY="10" VerticalOptions="Center" HorizontalOptions="Center" CommandLabel="{Binding GoSignUp}" Text="Inscrivez vous pour rejoindre Silo" FontSize="10" TextColor="Black" />-->
+
+			</Grid>
+		</StackLayout>
+	</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

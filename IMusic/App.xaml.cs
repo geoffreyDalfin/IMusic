@@ -8,7 +8,7 @@ namespace IMusic
 		{
 			InitializeComponent();
 
-			MainPage = new IMusicPage();
+			MainPage = new NavigationPage(new Views.HomePage(new ViewModels.MusicViewModel()));
 		}
 
 		protected override void OnStart()

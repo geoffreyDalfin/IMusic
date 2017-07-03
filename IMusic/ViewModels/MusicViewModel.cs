@@ -13,11 +13,50 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Plugin.FilePicker.Abstractions;
 using Plugin.FilePicker;
+using System.Diagnostics;
 
 namespace IMusic.ViewModels
 {
 	public class MusicViewModel : INotifyPropertyChanged
 	{
+
+		public Musique Item
+		{
+			get;
+			set;
+
+		}
+
+		public int Id
+		{
+			get { return this.Item.Id; }
+		}
+
+		public String Titre
+		{
+			get
+			{
+				return this.Item.Titre;
+			}
+			set
+			{
+				this.Item.Titre = value;
+				OnPropertyChanged("Titre");
+			}
+		}
+
+		public String PathMusique
+		{
+			get
+			{
+				return this.Item.PathMusique;
+			}
+			set
+			{
+				this.Item.PathMusique = value;
+				OnPropertyChanged("PathMusique");
+			}
+		}
 
 		private List<Musique> itemsMusic;
 
@@ -40,6 +79,9 @@ namespace IMusic.ViewModels
 			private set;
 		}
 
+		public ICommand Refresh
+		{ get; private set; }
+
 
 		public MusicViewModel()
 		{
@@ -47,13 +89,38 @@ namespace IMusic.ViewModels
 			GetItem();
 
 			AddMusique = new DelegateCommand(
-				async () =>
+				 () =>
 				{
-					FileData fileData = new FileData();
+					Debug.WriteLine("Command poste marche");
+					/*FileData fileData = new FileData();
 					fileData = await CrossFilePicker.Current.PickFile();
 					byte[] data = fileData.DataArray;
-					string name = " " + fileData.FileName;
+					string name = " " + fileData.FileName;*/
 				});
+
+			Refresh = new DelegateCommand(
+				async () => 
+			{ 
+				IsBusy = true;
+				var att = await GetItem();
+				IsBusy = false;
+			});
+		}
+
+		bool isBusy;
+
+		public bool IsBusy
+		{
+			get { return isBusy; }
+			set
+			{
+				if (isBusy == value)
+					return;
+
+				isBusy = value;
+				OnPropertyChanged("IsBusy");
+			}
+
 		}
 
 		async Task<List<Musique>> GetItem()

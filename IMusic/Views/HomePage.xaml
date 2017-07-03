@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:abstractions="clr-namespace:RoundedBoxView.Forms.Plugin.Abstractions;assembly=RoundedBoxView.Forms.Plugin.Abstractions" x:Class="IMusic.Views.HomePage">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Text="Ajouter Musique" Command="{Binding AddMusique}"/>
+		<ToolbarItem Text="+" Command="{Binding AddMusique}"/>
 	</ContentPage.ToolbarItems>
 	<StackLayout>
 		<Grid>
 			<StackLayout>
-				<ListView ItemsSource="{Binding ItemMusic}" RowHeight="250" HasUnevenRows="true" IsPullToRefreshEnabled="true" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy}">
+				<ListView ItemsSource="{Binding ItemMusic}" RowHeight="250" HasUnevenRows="true" IsPullToRefreshEnabled="true" RefreshCommand="{Binding Refresh}" IsRefreshing="{Binding IsBusy}">
 					<ListView.SeparatorVisibility>
 						<OnPlatform x:TypeArguments="SeparatorVisibility" Android="Default" iOS="None" />
 					</ListView.SeparatorVisibility>

@@ -15,11 +15,11 @@ namespace IMusic.Views
 		{
 			InitializeComponent();
 			this.BindingContext = sourceMusical;
-			//labelmusic.Text = sourceMusical.Titre;
+			labelmusic.Text = sourceMusical.Titre;
 			CrossMediaManager.Current.PlayingChanged += (sender, e) =>
 			{
 				ProgressBar.Progress = e.Progress;
-				Duration.Text = "" + e.Duration.TotalSeconds.ToString() + " seconds";
+				Duration.Text = e.Position.Minutes.ToString()+ ":" + e.Position.Seconds.ToString() + "/" + e.Duration.Minutes.ToString()+":"+ e.Duration.Seconds.ToString();
 			};
 		}
 

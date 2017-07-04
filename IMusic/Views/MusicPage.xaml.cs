@@ -10,6 +10,7 @@ namespace IMusic.Views
 		{
 			InitializeComponent();
 			this.BindingContext = sourceMusical;
+			labelmusic.Text = sourceMusical.Item.Titre;
 		}
 	}
 }

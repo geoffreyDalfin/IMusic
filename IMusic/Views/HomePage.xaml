@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:abstractions="clr-namespace:RoundedBoxView.Forms.Plugin.Abstractions;assembly=RoundedBoxView.Forms.Plugin.Abstractions"  x:Class="IMusic.Views.HomePage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:IMusic.Views.Converters" xmlns:behaviors="clr-namespace:IMusic.Views.Behaviors" xmlns:abstractions="clr-namespace:RoundedBoxView.Forms.Plugin.Abstractions;assembly=RoundedBoxView.Forms.Plugin.Abstractions" x:Class="IMusic.Views.HomePage">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Text="Add" Command="{Binding AddMusique}"/>
+		<ToolbarItem Text="Add" Command="{Binding AddMusique}" />
 	</ContentPage.ToolbarItems>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
 	<StackLayout>
 		<Grid>
 			<StackLayout>
@@ -10,6 +15,9 @@
 					<ListView.SeparatorVisibility>
 						<OnPlatform x:TypeArguments="SeparatorVisibility" Android="Default" iOS="None" />
 					</ListView.SeparatorVisibility>
+					<ListView.Behaviors>
+						<behaviors:EventToCommandBehavior EventName="ItemSelected" Command="{Binding GoToMusique}" Converter="{StaticResource SelectedItemConverter}" />
+					</ListView.Behaviors>
 					<ListView.ItemTemplate>
 						<DataTemplate>
 							<ViewCell>

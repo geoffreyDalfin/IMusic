@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:IMusic" BackgroundColor="White" Padding="0,20,0,0" x:Class="IMusic.Views.MusicPage">
 	<StackLayout>
-		<Grid>
+		<!--Grid>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="*" />
@@ -47,6 +47,7 @@
 					</ListView>
 				</StackLayout>
 			</Grid>
-		</StackLayout>
+		</StackLayout>-->
+		<Label x:Name="labelmusic" VerticalOptions="Center" HorizontalOptions="Center" />
 	</StackLayout>
 </ContentPage>

@@ -1,6 +1,7 @@
 ﻿using System;
 using IMusic.Models;
 using IMusic.Services;
+using IMusic.Views;
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -80,7 +81,16 @@ namespace IMusic.ViewModels
 		}
 
 		public ICommand Refresh
-		{ get; private set; }
+		{
+			get;
+			private set;
+		}
+
+		public ICommand GoToMusique
+		{
+			get;
+			private set;
+		}
 
 
 		public MusicViewModel()
@@ -116,6 +126,13 @@ namespace IMusic.ViewModels
 				IsBusy = true;
 				var att = await GetItem();
 				IsBusy = false;
+			});
+
+			GoToMusique = new DelegateCommand(
+				async () =>
+			{
+				var musiquePage = new MusicPage(new MusicViewModel());
+				await Application.Current.MainPage.Navigation.PushAsync(musiquePage);
 			});
 		}
 

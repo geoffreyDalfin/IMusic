@@ -6,6 +6,8 @@ namespace IMusic.Models
 	{
 		[JsonProperty(PropertyName = "IdMusique")]
 		public int Id { get; set; }
+		[JsonProperty(PropertyName = "IdUser")]
+		public int IdUser { get; set; }
 		[JsonProperty(PropertyName = "Titre")]
 		public String Titre { get; set; }
 

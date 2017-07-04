@@ -86,7 +86,7 @@ namespace IMusic.ViewModels
 			private set;
 		}
 
-		public ICommand GoToMusique
+		public ICommand GoToMusiqueCommand
 		{
 			get;
 			private set;
@@ -128,12 +128,8 @@ namespace IMusic.ViewModels
 				IsBusy = false;
 			});
 
-			GoToMusique = new DelegateCommand(
-				async () =>
-			{
-				var musiquePage = new MusicPage(new MusicViewModel());
-				await Application.Current.MainPage.Navigation.PushAsync(musiquePage);
-			});
+			GoToMusiqueCommand = new Command<Musique>(GoToMusique);
+
 		}
 
 		bool isBusy;
@@ -157,6 +153,13 @@ namespace IMusic.ViewModels
 			List<Musique> lstmusic = await MusiqueService.GellAllMusic();
 			ItemMusic = lstmusic;
 			return ItemMusic;
+		}
+
+		async void GoToMusique(Musique music)
+		{
+			var musiquePage = new MusicPage(music);
+			await Application.Current.MainPage.Navigation.PushAsync(musiquePage);
+
 		}
 
 

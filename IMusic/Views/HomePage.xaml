@@ -16,7 +16,7 @@
 						<OnPlatform x:TypeArguments="SeparatorVisibility" Android="Default" iOS="None" />
 					</ListView.SeparatorVisibility>
 					<ListView.Behaviors>
-						<behaviors:EventToCommandBehavior EventName="ItemSelected" Command="{Binding GoToMusique}" Converter="{StaticResource SelectedItemConverter}" />
+						<behaviors:EventToCommandBehavior EventName="ItemSelected" Command="{Binding GoToMusiqueCommand}" Converter="{StaticResource SelectedItemConverter}" />
 					</ListView.Behaviors>
 					<ListView.ItemTemplate>
 						<DataTemplate>

@@ -1,53 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:IMusic" BackgroundColor="White" Padding="0,20,0,0" x:Class="IMusic.Views.MusicPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:forms="clr-namespace:Plugin.MediaManager.Forms;assembly=Plugin.MediaManager.Forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:IMusic" BackgroundColor="White" Padding="0,20,0,0" x:Class="IMusic.Views.MusicPage">
 	<StackLayout>
-		<!--Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="*" />
-			</Grid.ColumnDefinitions>
+		<Grid>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="100" />
-				<RowDefinition Height="150" />
+				<RowDefinition Height="4*" />
+				<RowDefinition Height="1*" />
 			</Grid.RowDefinitions>
-			<Image Source="mister-v-album-couv-h-jpg.jpg" TranslationY="-18" Aspect="AspectFill" Opacity="0.550" Grid.RowSpan="2" Grid.ColumnSpan="3" />
-			<Label Text="Double V" TextColor="White" Font="20" Grid.Column="1" VerticalTextAlignment="Center" HorizontalOptions="Center" />
-		</Grid>
-		<StackLayout>
-			<Grid>
-				<StackLayout>
-					<ListView ItemsSource="{Binding ItemMusic}" HasUnevenRows="true" IsPullToRefreshEnabled="true" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy}">
-						<ListView.SeparatorVisibility>
-							<OnPlatform x:TypeArguments="SeparatorVisibility" Android="Default" iOS="None" />
-						</ListView.SeparatorVisibility>
-						<ListView.ItemTemplate>
-							<DataTemplate>
-								<ViewCell>
-									<ViewCell.View>
-										<Grid>
-											<Grid.RowDefinitions>
-												<RowDefinition Height="5" />
-												<RowDefinition Height="20" />
-												<RowDefinition Height="10" />
-												<RowDefinition Height="0.7" />
-											</Grid.RowDefinitions>
-											<Grid.ColumnDefinitions>
-												<ColumnDefinition Width="50" />
-												<ColumnDefinition Width="*" />
-											</Grid.ColumnDefinitions>
-											<Label  Grid.Column="1" Grid.RowSpan="3" Text="{Binding Titre}" VerticalOptions="Center" />
-											<BoxView Color="#E0E0E0" Grid.Row="3" Grid.ColumnSpan="2" WidthRequest="320" HeightRequest="0.3">
-											</BoxView>
-										</Grid>
-									</ViewCell.View>
-								</ViewCell>
-							</DataTemplate>
-						</ListView.ItemTemplate>
-					</ListView>
+			<Image Source="AlbumEmpty.png" Grid.Row="0" Grid.RowSpan="1" VerticalOptions="Center" HorizontalOptions="Center" />
+			<forms:VideoView Grid.Row="0" Grid.RowSpan="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="http://www.montemagno.com/sample.mp3" AspectMode="AspectFill" />
+			<Grid HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.RowSpan="1" Margin="20">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="1*" />
+					<RowDefinition Height="6*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<StackLayout Grid.Row="0" Grid.ColumnSpan="3" Orientation="Vertical" TranslationY="-60">
+					<StackLayout Orientation="Horizontal" >
+						<Label Text="Duration: ">
+						</Label>
+						<Label x:Name="Duration" />
+					</StackLayout>
+					<ProgressBar x:Name="ProgressBar" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand">
+					</ProgressBar>
 				</StackLayout>
+				<Button Grid.Row="1" Grid.Column="0" TextColor="White" BackgroundColor="Gray" HeightRequest="50" VerticalOptions="Center" Text="Play" WidthRequest="100" Clicked="PlayClicked">
+				</Button>
+				<Button Grid.Row="1" Grid.Column="1" TextColor="White" Text="Pause" BackgroundColor="Gray" HeightRequest="50" VerticalOptions="Center" WidthRequest="100" Clicked="PauseClicked">
+				</Button>
+				<Button Grid.Row="1" Grid.Column="2" TextColor="White" Text="Stop" BackgroundColor="Gray" HeightRequest="50" VerticalOptions="Center" WidthRequest="100" Clicked="StopClicked">
+				</Button>
 			</Grid>
-		</StackLayout>-->
-		<Label x:Name="labelmusic" VerticalOptions="Center" HorizontalOptions="Center" />
+		</Grid>
+		<!--<Image Source="AlbumEmpty.png" VerticalOptions="Center" HorizontalOptions="Center" />
+		<Label x:Name="labelmusic" VerticalOptions="Center" HorizontalOptions="Center" />-->
 	</StackLayout>
 </ContentPage>

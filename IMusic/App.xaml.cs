@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using Plugin.MediaManager.Forms;
 
 namespace IMusic
 {
@@ -6,6 +7,7 @@ namespace IMusic
 	{
 		public App()
 		{
+			var workaround = typeof(VideoView);
 			InitializeComponent();
 			/*
 			MainPage = new Views.RootPage()

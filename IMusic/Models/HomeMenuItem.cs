@@ -3,7 +3,7 @@ namespace IMusic
 {
 	public enum MenuType
 	{
-		About,
+		Home,
 		Blog,
 		Twitter,
 		Hanselminutes,
@@ -17,7 +17,7 @@ namespace IMusic
 
 		public HomeMenuItem()
 		{
-			MenuType = MenuType.About;
+			MenuType = MenuType.Home;
 		}
 		public string Title { get; set; }
 		public string Icon { get; set; }

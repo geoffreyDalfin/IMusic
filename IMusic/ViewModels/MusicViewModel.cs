@@ -89,9 +89,21 @@ namespace IMusic.ViewModels
 			GetItem();
 
 			AddMusique = new DelegateCommand(
-				 () =>
+				 async () =>
 				{
-					Debug.WriteLine("Command poste marche");
+					try
+					{
+						FileData fileData = new FileData();
+						fileData = await CrossFilePicker.Current.PickFile();
+						byte[] data = fileData.DataArray;
+						string name = fileData.FileName;
+						string filePath = fileData.FileName;
+					}
+					catch (Exception ex)
+					{
+
+						Debug.WriteLine("Command poste marche" + ex);
+					}
 					/*FileData fileData = new FileData();
 					fileData = await CrossFilePicker.Current.PickFile();
 					byte[] data = fileData.DataArray;
@@ -99,8 +111,8 @@ namespace IMusic.ViewModels
 				});
 
 			Refresh = new DelegateCommand(
-				async () => 
-			{ 
+				async () =>
+			{
 				IsBusy = true;
 				var att = await GetItem();
 				IsBusy = false;

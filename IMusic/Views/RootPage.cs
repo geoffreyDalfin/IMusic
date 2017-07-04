@@ -12,7 +12,7 @@ namespace IMusic.Views
 		{
 			Pages = new Dictionary<MenuType, NavigationPage>();
 			Master = new MainPage(this);
-			NavigateAsync(MenuType.About);
+			NavigateAsync(MenuType.Home);
 
 
 			InvalidateMeasure();
@@ -32,10 +32,10 @@ namespace IMusic.Views
 			{
 				switch (id)
 				{
-				/*	case MenuType.About:
-						Pages.Add(id, new NavigationPage(new AboutPage()));
+					case MenuType.Home:
+						Pages.Add(id, new NavigationPage(new Views.HomePage(new ViewModels.MusicViewModel()) { }));
 						break;
-					case MenuType.Blog:
+				/*	case MenuType.Blog:
 						Pages.Add(id, new NavigationPage(new BlogPage()));
 						break;
 					case MenuType.DeveloperLife:

@@ -8,6 +8,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using RoundedBoxView.Forms.Plugin.Droid;
+using ImageCircle.Forms.Plugin.Droid;
 
 namespace IMusic.Droid
 {
@@ -23,6 +24,7 @@ namespace IMusic.Droid
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 			RoundedBoxViewRenderer.Init();
+			ImageCircleRenderer.Init();
 			LoadApplication(new App());
 		}
 	}

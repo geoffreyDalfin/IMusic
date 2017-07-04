@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:IMusic.Views;assembly=IMusic" x:Class="IMusic.Views.MainPage" Title="Menu" Icon="hamburger.png" BackgroundColor="#03A9F4">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"  xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:IMusic.Views;assembly=IMusic" x:Class="IMusic.Views.MainPage" Title="Menu" Icon="hamburger.png" BackgroundColor="#03A9F4">
 	<ContentPage.Content>
 		<StackLayout VerticalOptions="FillAndExpand">
 			<ListView CachingStrategy="RecycleElement" SeparatorColor="Transparent" HasUnevenRows="True" x:Name="ListViewMenu">
@@ -13,19 +13,20 @@
 						<Grid.RowDefinitions>
 							<RowDefinition Height="30" />
 							<RowDefinition Height="80" />
+							<RowDefinition Height="20" />
 							<RowDefinition Height="Auto" />
 							<RowDefinition Height="5" />
 						</Grid.RowDefinitions>
 						<BoxView Grid.ColumnSpan="3" Grid.RowSpan="4" BackgroundColor="#03A9F4" />
-						<!-- <controls:CircleImage
+						 <controls:CircleImage
                             Grid.Column="1"
                             Grid.Row="1"
-                            HorizontalOptions="Start"
-                            VerticalOptions="End"
-                            Source="scott159.png"
-                            WidthRequest="75" HeightRequest="75"/>-->
-						<Label Grid.Column="1" Grid.Row="2" Text="Hanselman.Forms" />
+							VerticalOptions="Center"
+                            Source="IconUser.png"/>
+						<Label Grid.Column="1" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center" Text="Dalfin Geoffrey" TextColor="White" />
+						<BoxView Color="Black" Grid.ColumnSpan="3" Grid.Row="4"  WidthRequest="320" HeightRequest="0.1" />
 					</Grid>
+
 				</ListView.Header>
 				<ListView.ItemTemplate>
 					<DataTemplate>
@@ -36,7 +37,7 @@
 									<ColumnDefinition Width="*" />
 								</Grid.ColumnDefinitions>
 								<Image Source="{Binding Icon}" HeightRequest="25" WidthRequest="25" />
-								<Label Grid.Column="1" Text="{Binding Title}" FontSize="24" />
+								<Label Grid.Column="1" Text="{Binding Title}" TextColor="White" FontSize="24" />
 							</Grid>
 						</ViewCell>
 					</DataTemplate>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:abstractions="clr-namespace:RoundedBoxView.Forms.Plugin.Abstractions;assembly=RoundedBoxView.Forms.Plugin.Abstractions"  x:Class="IMusic.Views.HomePage">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Text="+" Command="{Binding AddMusique}"/>
+		<ToolbarItem Text="Add" Command="{Binding AddMusique}"/>
 	</ContentPage.ToolbarItems>
 	<StackLayout>
 		<Grid>
@@ -28,7 +28,7 @@
 										</Grid.ColumnDefinitions>
 										<abstractions:RoundedBoxView BackgroundColor="#E0E0E0" Grid.Row="2" Grid.Column="1" HeightRequest="300" WidthRequest="100" CornerRadius="5" />
 										<Image Source="IconMusique.png" Grid.Column="1" TranslationY="33" TranslationX="30" />
-										<Label Text="dalfin" FontSize="12" Grid.Column="1" TranslationX="50" Grid.RowSpan="3" TranslationY="33" />
+										<Label Text="Dalfin Geoffrey" FontSize="12" Grid.Column="1" TranslationX="50" Grid.RowSpan="3" TranslationY="33" />
 										<BoxView Color="Black" Grid.Column="1" Grid.Row="1" TranslationY="45" WidthRequest="320" HeightRequest="0.1" />
 										<Label Grid.Column="1" Text="{Binding Titre}" Grid.Row="2" TranslationX="50" VerticalOptions="Center" />
 									</Grid>

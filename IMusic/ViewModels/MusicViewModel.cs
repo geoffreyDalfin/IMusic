@@ -93,6 +93,7 @@ namespace IMusic.ViewModels
 		}
 
 
+
 		public MusicViewModel()
 		{
 			ItemMusic = new List<Musique>();
@@ -130,7 +131,10 @@ namespace IMusic.ViewModels
 
 			GoToMusiqueCommand = new Command<Musique>(GoToMusique);
 
+
 		}
+
+
 
 		bool isBusy;
 
@@ -148,6 +152,12 @@ namespace IMusic.ViewModels
 
 		}
 
+		public async Task<String> GetItemWithDeezer(Musique music)
+		{
+			var musicDeezer = await MusiqueService.GetMusicDeezer(music.Titre);
+			music.PathMusique = musicDeezer;
+			return music.PathMusique;
+		}
 		async Task<List<Musique>> GetItem()
 		{
 			List<Musique> lstmusic = await MusiqueService.GellAllMusic();
@@ -157,11 +167,10 @@ namespace IMusic.ViewModels
 
 		async void GoToMusique(Musique music)
 		{
-			var musiquePage = new MusicPage(music);
-			await Application.Current.MainPage.Navigation.PushAsync(musiquePage);
-
+			var mpage = new MusicPage(music);
+			await GetItemWithDeezer(music);
+			await Application.Current.MainPage.Navigation.PushAsync(mpage);
 		}
-
 
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -172,6 +181,10 @@ namespace IMusic.ViewModels
 				PropertyChanged(this,
 					new PropertyChangedEventArgs(propertyName));
 			}
+		}
+
+		public void OnSearch() { 
+		
 		}
 
 

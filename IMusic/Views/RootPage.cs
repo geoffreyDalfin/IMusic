@@ -14,6 +14,7 @@ namespace IMusic.Views
 			Master = new MainPage(this);
 			NavigateAsync(MenuType.Home);
 
+			NavigationPage.SetHasNavigationBar(this, false);
 
 			InvalidateMeasure();
 

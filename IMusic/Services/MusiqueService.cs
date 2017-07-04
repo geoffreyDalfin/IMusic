@@ -48,6 +48,29 @@ namespace IMusic.Services
 			return musiqueList;
 		}
 
+
+		public static async Task<String> GetMusicDeezer(String pathMusique)
+		{
+			String musiqueDeezer = null;
+			try
+			{
+				using (var httpClient = new HttpClient())
+				{
+					var result = await httpClient.GetAsync("http://localhost:1337/getDeezer?search=" + pathMusique);
+					var responseText = await result.Content.ReadAsStringAsync();
+					var Object = JsonConvert.DeserializeObject<String>(responseText);
+					musiqueDeezer = Object.ToString();
+
+				}
+			}
+			catch (Exception ex)
+			{
+				//In case we have a problem...
+				Debug.WriteLine("Un probleme pour récupérer les musiques " + ex.Message);
+			}
+			return musiqueDeezer;
+		}
+
 		public static async void SaveMusic(Musique music)
 		{
 			try
@@ -60,7 +83,7 @@ namespace IMusic.Services
 				}
 			}
 			catch (Exception ex)
-			{ 
+			{
 				Debug.WriteLine("Un probleme pour poster les musiques " + ex.Message);
 			}
 		}

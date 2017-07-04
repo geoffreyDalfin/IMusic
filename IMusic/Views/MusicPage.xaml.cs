@@ -15,6 +15,7 @@ namespace IMusic.Views
 		{
 			InitializeComponent();
 			this.BindingContext = sourceMusical;
+			player.Source = sourceMusical.PathMusique; 
 			labelmusic.Text = sourceMusical.Titre;
 			CrossMediaManager.Current.PlayingChanged += (sender, e) =>
 			{
